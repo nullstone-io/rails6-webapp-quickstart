@@ -2,11 +2,16 @@
 
 This is a Rails Web App Quickstart for [Nullstone](https://nullstone.io).
 
-This web app was generated using the following:
-```shell
-rails new --database=postgresql -T .
-rails generate rspec:install
-```
+This web app was generated following these steps.
+1. `rails new --database=postgresql --skip-test --skip-sprockets .`
+2. Add the following to `Gemfile`
+  ```
+  group :test do
+    gem 'rspec-rails'
+  end
+  ```
+3. `bundle install`
+4. `rails generate rspec:install`
 
 This example is configured with the following:
 - static assets served through nginx
