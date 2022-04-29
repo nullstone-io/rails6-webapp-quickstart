@@ -25,6 +25,7 @@ services:
     environment:
       - INSTALL_PACKAGES_ON_BOOT=true
       - NULLSTONE_ENV=local
+      - RAILS_ENV=development
       - POSTGRES_URL=postgres://acme:acme@db:5432/acme
     depends_on:
       - db
