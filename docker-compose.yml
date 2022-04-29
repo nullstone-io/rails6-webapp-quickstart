@@ -17,7 +17,7 @@ services:
   app:
     build: .
     volumes:
-      - gem_cache:/usr/local/bundle
+      - gem-cache:/usr/local/bundle
       - .:/app
       - app-public:/app/public
       - nginx-confd:/etc/nginx/conf.d
@@ -31,7 +31,7 @@ services:
       - db
 
   db:
-    image: postgres
+    image: "postgres:13"
     ports:
       - "5432:5432"
     environment:
@@ -40,7 +40,7 @@ services:
       - POSTGRES_DB=acme
 
 volumes:
-  gem_cache:
+  gem-cache:
   app-public:
   nginx-confd:
   nginx-templates:
