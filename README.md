@@ -15,20 +15,13 @@ This quickstart is set up with:
   - Pretty errors for local development
 - Hot reload for local development
 
-This web app was generated following these steps.
-1. `rails new --database=postgresql --skip-test --skip-sprockets .`
-2. Add the following to `Gemfile`
-  ```
-  group :test do
-    gem 'rspec-rails'
-  end
-  ```
-3. `bundle install`
-4. `rails generate rspec:install`
+## How to launch via Nullstone
 
-This example is configured with the following:
-- static assets served through nginx
-- postgresql database
+1. Create postgresql datastore.
+2. Create a public web app. (Remember `app-name` for later)
+3. Add the postgresql datastore (from step 1) to the app.
+4. Add the `SECRET_KEY_BASE for Rails Cookies` capability to the app.
+5. Add the `Nginx Sidecar for Fargate Service` capability to the app.
 
 ## How to run locally
 
@@ -45,3 +38,16 @@ You do not need to rebuild/restart the app when making changes to Rails files.
 
 However, when updating dependencies, you will need to restart your docker container.
 The dependencies will be installed on boot of the docker container.
+
+## Details on quickstart
+
+This web app was generated following these steps.
+1. `rails new --database=postgresql --skip-test --skip-sprockets .`
+2. Add the following to `Gemfile`
+  ```
+  group :test do
+    gem 'rspec-rails'
+  end
+  ```
+3. `bundle install`
+4. `rails generate rspec:install`
