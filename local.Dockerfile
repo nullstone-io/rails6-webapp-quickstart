@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM nullstone/rails:6-webapp-ruby3
+FROM nullstone/rails:webapp-ruby3
 
 ENV RAILS_ENV development
 
