@@ -4,7 +4,7 @@ This is a Rails Web App Quickstart for [Nullstone](https://nullstone.io).
 
 This quickstart is set up with:
 - Ruby 3
-- Rails 6
+- Rails 6.1
 - Static Assets
   - Configured to hot-reload assets for local development
   - Precompiled and served through NGINX for docker builds
@@ -42,7 +42,7 @@ The dependencies will be installed on boot of the docker container.
 ## Details on quickstart
 
 This web app was generated following these steps.
-1. `rails new --database=postgresql --skip-test --skip-sprockets .`
+1. `rails new --database=postgresql --skip-test --webpack .`
 2. Add the following to `Gemfile`
   ```
   group :test do
