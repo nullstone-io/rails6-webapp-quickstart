@@ -51,3 +51,16 @@ This web app was generated following these steps.
   ```
 3. `bundle install`
 4. `rails generate rspec:install`
+5. Set logs to stdout in development mode.
+  ```
+  # config/environments/development.rb
+  ...
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
+
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger     = ActiveSupport::TaggedLogging.new(logger)
+  end
+  ```
