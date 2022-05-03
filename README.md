@@ -22,6 +22,11 @@ This quickstart is set up with:
 3. Add the postgresql datastore (from step 1) to the app.
 4. Add the `SECRET_KEY_BASE for Rails Cookies` capability to the app.
 5. Add the `Nginx Sidecar for Fargate Service` capability to the app.
+6. Build, push, and deploy
+  ```shell
+  docker build -t rails-quickstart .
+  nullstone launch --source=rails-quickstart --app=<app-name> --env=<env-name>
+  ```
 
 ## How to run locally
 
