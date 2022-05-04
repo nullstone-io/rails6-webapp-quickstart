@@ -39,10 +39,13 @@ Then, visit [http://localhost:3000](http://localhost:3000).
 3. Add the postgresql datastore (from step 1) to the app.
 4. Add the `SECRET_KEY_BASE for Rails Cookies` capability to the app.
 5. Add the `Nginx Sidecar for Fargate Service` capability to the app.
-6. Build, provision, push, and deploy
+6. Provision
+  ```shell
+  nullstone up --wait --block=<app-name> --env=<env-name>
+  ```
+7. Build, push, and deploy
   ```shell
   docker build -t rails-quickstart .
-  nullstone up --wait --block=<app-name> --env=<env-name>
   nullstone launch --source=rails-quickstart --app=<app-name> --env=<env-name>
   ```
 
