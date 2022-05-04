@@ -1,30 +1,18 @@
 version: "3.8"
 
 services:
-  nginx:
-    image: nginx:stable-alpine
-    volumes:
-      - app-public:/app/public
-      - nginx-confd:/etc/nginx/conf.d
-      - nginx-templates:/etc/nginx/templates:ro
-    ports:
-      - "3000:80"
-    environment:
-      - WEBAPP_ADDR=app:9000
-    depends_on:
-      - app
-
   app:
-    build:
-      context: .
-      dockerfile: local.Dockerfile
+    image: nullstone/rails:webapp
+    entrypoint: /local.entrypoint.sh
+    command: bundle exec rails server
     volumes:
       - .:/app
-      - app-public:/app/public
-      - nginx-confd:/etc/nginx/conf.d
-      - nginx-templates:/etc/nginx/templates
+      - gem-cache:/usr/local/bundle
+    ports:
+      - "3000:3000"
     environment:
       - NULLSTONE_ENV=local
+      - RAILS_ENV=development
       - POSTGRES_URL=postgres://acme:acme@db:5432/acme
     depends_on:
       - db
@@ -39,6 +27,4 @@ services:
       - POSTGRES_DB=acme
 
 volumes:
-  app-public:
-  nginx-confd:
-  nginx-templates:
+  gem-cache:
