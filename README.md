@@ -52,10 +52,16 @@ Then, visit [http://localhost:3000](http://localhost:3000).
 ### Hot reload
 
 The `app` in `docker-compose.yml` is configured to automatically reload changes to files.
-You do not need to rebuild/restart the app when making changes to Rails files.
+You do not need to rebuild/restart the app when making changes to code.
 
-However, when updating dependencies, you will need to restart your docker container.
-The dependencies will be installed on boot of the docker container.
+### Update dependencies
+
+To make changes to dependencies, make changes to `Gemfile` and restart your docker container.
+`bundle install` happens automatically at the boot of the docker container to update dependencies.
+
+```shell
+docker compose restart app
+```
 
 ## Details on quickstart
 
