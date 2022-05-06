@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - app-public:/app/public
+      - nginx-confd:/etc/nginx/conf.d
+      - nginx-templates:/etc/nginx/templates:ro
+    ports:
+      - "3000:80"
+    environment:
+      - WEBAPP_ADDR=app:3000
+    depends_on:
+      - app
+
+  app:
+    build: .
+    volumes:
+      - app-public:/app/public
+      - nginx-confd:/etc/nginx/conf.d
+      - nginx-templates:/etc/nginx/templates
+    environment:
+      - NULLSTONE_ENV=local
+      - POSTGRES_URL=postgres://acme:acme@db:5432/acme
+    depends_on:
+      - db
+
+  db:
+    image: "postgres:13"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=acme
+      - POSTGRES_PASSWORD=acme
+      - POSTGRES_DB=acme
+
+volumes:
+  app-public:
+  nginx-confd:
+  nginx-templates:
