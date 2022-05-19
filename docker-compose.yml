@@ -11,7 +11,7 @@ services:
       - "9000:9000"
     environment:
       - NULLSTONE_ENV=local
-      - POSTGRES_URL=postgres://acme:acme@db:5432/acme
+      - POSTGRES_URL=postgres://postgres:postgres@db:5432/app
     depends_on:
       - db
 
@@ -20,9 +20,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=acme
-      - POSTGRES_PASSWORD=acme
-      - POSTGRES_DB=acme
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=app
 
 volumes:
   gems: {}
