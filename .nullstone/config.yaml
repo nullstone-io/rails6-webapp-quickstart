@@ -15,7 +15,7 @@ apps:
       - module: nullstone/rails-cookies
       - module: nullstone/aws-fargate-nginx-sidecar
         vars:
-          webapp_addr: "localhost:3000"
+          webapp_addr: "localhost:9000"
       - module: nullstone/aws-load-balancer
         connections:
           subdomain: rails-webapp-subdomain
