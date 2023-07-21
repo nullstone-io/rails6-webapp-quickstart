@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM nullstone/rails:webapp
+FROM nullstone/rails:ruby3.1-webapp
 
 # Install packages
 COPY Gemfile* .
@@ -11,4 +11,4 @@ RUN yarn install
 
 # Copy in code, precompile static assets
 COPY . .
-RUN SECRET_KEY_BASE=1 bundle exec rake assets:precompile
+RUN SECRET_KEY_BASE=1 NODE_OPTIONS=--openssl-legacy-provider bundle exec rake assets:precompile

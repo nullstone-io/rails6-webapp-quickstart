@@ -66,7 +66,7 @@ docker compose restart app
 ## Details on quickstart
 
 This web app was generated following these steps.
-1. `rails new --database=postgresql --skip-test --webpack .`
+1. `rails . new --database=postgresql --skip-test --webpack`
 2. Add the following to `Gemfile`
   ```
   group :test do
