@@ -1,0 +1,21 @@
+version: "0.1"
+
+subdomains:
+  rails-webapp-subdomain:
+    module: nullstone/aws-autogen-subdomain
+
+apps:
+  aspnet:
+    module: nullstone/aws-fargate-service
+    vars:
+      cpu: 256
+      memory: 512
+      port: 80
+    capabilities:
+      - module: nullstone/rails-cookies
+      - module: nullstone/aws-fargate-nginx-sidecar
+        vars:
+          webapp_addr: "localhost:3000"
+      - module: nullstone/aws-load-balancer
+        connections:
+          subdomain: rails-webapp-subdomain
