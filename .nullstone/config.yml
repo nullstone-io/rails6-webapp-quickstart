@@ -19,6 +19,6 @@ apps:
       - module: nullstone/aws-load-balancer
         connections:
           subdomain: rails-webapp-subdomain
-      - module: aws-postgres-access
+      - module: nullstone/aws-postgres-access
         connections:
           postgres: postgres
