@@ -4,6 +4,10 @@ subdomains:
   rails-webapp-subdomain:
     module: nullstone/autogen-aws-subdomain
 
+datastores:
+  postgres:
+    module: nullstone/aws-rds-postgres
+
 apps:
   rails-webapp-quickstart:
     module: nullstone/aws-fargate-service
